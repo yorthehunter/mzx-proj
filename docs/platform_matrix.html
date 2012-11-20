@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+<title>MegaZeux Platform Support Matrix</title>
+<style type="text/css">
+body {
+	font-family : "Verdana", "Bitstream Vera Sans";
+	margin-left : 1em;
+	margin-right : 1em;
+	font-size : 9pt;
+}
+
+p#legend {
+	margin-left : 1em;
+	margin-right : 1em;
+}
+
+table {
+	border-collapse : collapse;
+	border : 2px solid black;
+	border-spacing : 0;
+	width : 120em;
+}
+
+td, th {
+	text-align : center;
+	border-width : 1px 1px 1px 1px;
+	border-style : inset inset inset inset;
+	border-color : gray;
+	padding : 5px;
+	color : black;
+	width : 8.3%;
+}
+
+td {
+	vertical-align : top;
+}
+
+th {
+	background-color : rgb(200,200,200);
+}
+
+td.yes, td.no, td.no2, td.na, td.std {
+	vertical-align : middle;
+}
+
+span.yes, span.no, span.no2, span.na, span.std {
+	border : 1px solid black;
+	padding-right : 1em;
+	padding-left : 1em;
+}
+
+.yes {
+	background-color : rgb(0,255,0);
+}
+
+.no {
+	background-color : rgb(255,0,0);
+	font-weight : bold;
+	color : white;
+}
+
+.no2 {
+	background-color : rgb(255,150,150);
+	color : black;
+}
+
+.na {
+	background-color : rgb(220,220,200);
+}
+
+.std {
+	background-color : rgb(150,255,150);
+}
+
+a {
+	font-weight : normal;
+	font-size : 8pt;
+}
+
+li {
+	padding : 2px;
+	width : 50%;
+}
+</style>
+</head>
+
+<body>
+
+<h1>MegaZeux Platform Support Matrix</h1>
+<p>Best viewed with &gt;=1280 pixel monitor.</p>
+
+<p id="legend">
+<b>Legend:</b>
+<span class="yes">Ideal</span>
+<span class="std">Normal</span>
+<span class="na">Not applicable</span>
+<span class="no2">Suboptimal, Trivially fixable</span>
+<span class="no">Faulty, Not trivially fixable</span>
+</p>
+
+<table>
+
+<tr>
+<th>$PLATFORM</th>
+<th>amiga</th>
+<th>android</th>
+<th>darwin</th>
+<th>gp2x</th>
+<th>mingw</th>
+<th>msvc</th>
+<th>nds</th>
+<th>psp</th>
+<th>unix</th>
+<th>wii</th>
+<th>pandora</th>
+</tr>
+
+<tr>
+<th>Description</th>
+<td>AmigaOS 4.x</td>
+<td>Android</td>
+<td>MacOS 10.x</td>
+<td>GP2X</td>
+<td>Windows<br/>(GNU toolchain)</td>
+<td>Windows<br/>(Visual Studio)</td>
+<td>Nintendo DS</td>
+<td>Playstation Portable</td>
+<td>Linux, BSD, Solaris<br/>HaikuOS, etc.</td>
+<td>Nintendo Wii</td>
+<td>Pandora</td>
+</tr>
+
+<tr>
+<th>Architecture(s)<br/>(Tested Only)</th>
+<td>PPC (ELF)</td>
+<td>ARMv7-a (ELF)<br/>i686 (ELF)</td>
+<td>PPC (Mach-O)<br/>i686 (Mach-O)</td>
+<td>ARM9 (ELF)</td>
+<td>x86 (PE COFF)</td>
+<td>x86 (PE COFF)<br/>x64 (PE+ COFF)</td>
+<td>ARM9 (ELF)</td>
+<td>MIPS (ELF)</td>
+<td>x86 (ELF)<br/>AMD64 (ELF)<br/>PPC64 (ELF)</td>
+<td>PPC (ELF)</td>
+<td>ARMv7-a (ELF)</td>
+</tr>
+
+<tr>
+<th>Endian</th>
+<td>Big</td>
+<td>Little</td>
+<td>Varies</td>
+<td>Little</td>
+<td>Little</td>
+<td>Little</td>
+<td>Little</td>
+<td>Little</td>
+<td>Varies</td>
+<td>Big</td>
+<td>Little</td>
+</tr>
+
+<tr>
+<th>Toolchain</th>
+<td>gcc 4.2.2<br/>binutils 2.14<br/>clib2</td>
+<td>gcc 4.2.1<br/>binutils 2.17<br/>bionic</td>
+<td>gcc 4.0.1<br/>cctools 667.3<br/>10.3 (min ver)</td>
+<td>gcc 4.1.1<br/>binutils 2.16.1<br/>glibc 2.3.6<br/>(open2x)</td>
+<td>gcc 4.4.0<br/>binutils 2.19.1</td>
+<td>Visual Studio 2008</td>
+<td>gcc 4.4.0<br/>binutils 2.19.1<br/>(dk r26)</td>
+<td>gcc 4.3.3<br/>binutils 2.16.1<br/>(dk r13)</td>
+<td>Various</td>
+<td>gcc 4.4.1<br/>binutils 2.19.1<br/>(dk r18)</td>
+<td>gcc 4.4.1<br/>binutils 2.19.51<br/>(CS 2009q3)</td>
+
+</tr>
+
+<tr>
+<th>Packaged</th>
+<td class="yes">LHA</td>
+<td class="no">TBD</td>
+<td class="yes">DMG</td>
+<td class="yes">ZIP</td>
+<td class="yes">ZIP</td>
+<td class="no2">NO<a href="#note1">[1]</a></td>
+<td class="yes">ZIP</td>
+<td class="yes">ZIP</td>
+<td class="yes">Various</td>
+<td class="yes">ZIP</td>
+<td class="no2">ZIP (PND?)</td>
+</tr>
+
+<tr>
+<th>Optimized<br/>Visibility<a href="#note2">[2]</a></th>
+<td class="yes">YES</td>
+<td class="yes">YES</td>
+<td class="yes">YES</td>
+<td class="na">N/A</td>
+<td class="yes">YES</td>
+<td class="yes">YES</td>
+<td class="na">N/A</td>
+<td class="na">N/A</td>
+<td class="yes">YES</td>
+<td class="na">N/A</td>
+<td class="yes">YES</td>
+</tr>
+
+<tr>
+<th>Stack Protector</th>
+<td class="yes">YES</td>
+<td class="no">NO</td>
+<td class="yes">YES</td>
+<td class="no">NO</td>
+<td class="no2">NO<a href="#note3">[3]</a></td>
+<td class="no">NO</td>
+<td class="no">NO</td>
+<td class="no">NO</td>
+<td class="yes">YES</td>
+<td class="no">NO</td>
+<td class="yes">YES</td>
+</tr>
+
+<tr>
+<th>Module Engine</th>
+<td class="std">ModPlug</td>
+<td class="std">ModPlug</td>
+<td class="std">ModPlug</td>
+<td>MikMod</td>
+<td class="std">ModPlug</td>
+<td class="std">ModPlug</td>
+<td class="na">N/A</td>
+<td class="std">ModPlug</td>
+<td class="std">ModPlug</td>
+<td class="std">ModPlug</td>
+<td class="std">ModPlug</td>
+</tr>
+
+<tr>
+<th>Ogg Vorbis</th>
+<td class="std">libvorbis</td>
+<td>tremor</td>
+<td class="std">libvorbis</td>
+<td>tremor</td>
+<td class="std">libvorbis</td>
+<td class="std">libvorbis</td>
+<td class="na">N/A</td>
+<td>tremor</td>
+<td class="std">libvorbis</td>
+<td class="std">libvorbis</td>
+<td>tremor</td>
+</tr>
+
+
+<tr>
+<th>Optimization</th>
+<td>Speed</td>
+<td>Size</td>
+<td>Speed</td>
+<td>Size</td>
+<td>Speed</td>
+<td>Speed</td>
+<td>Size</td>
+<td>Size</td>
+<td>Speed</td>
+<td>Size</td>
+<td>Speed</td>
+</tr>
+
+<tr>
+<th>SDL</th>
+<td class="yes">YES</td>
+<td class="std">NO</td>
+<td class="yes">YES</td>
+<td class="yes">YES</td>
+<td class="yes">YES</td>
+<td class="yes">YES</td>
+<td class="std">NO</td>
+<td class="yes">YES</td>
+<td class="yes">YES</td>
+<td class="std">NO</td>
+<td class="yes">YES</td>
+</tr>
+
+<tr>
+<th>EDITOR</th>
+<td class="yes">YES</td>
+<td class="yes">YES</td>
+<td class="yes">YES</td>
+<td class="no2">NO<a href="#note4">[4]</a></td>
+<td class="yes">YES</td>
+<td class="yes">YES</td>
+<td class="no2">NO<a href="#note4">[4]</a></td>
+<td class="no2">NO<a href="#note4">[4]</a></td>
+<td class="yes">YES</td>
+<td class="yes">YES</td>
+<td class="yes">YES</td>
+</tr>
+
+<tr>
+<th>HELPSYS</th>
+<td class="yes">YES</td>
+<td class="yes">YES</td>
+<td class="yes">YES</td>
+<td class="no2">NO<a href="#note4">[4]</a></td>
+<td class="yes">YES</td>
+<td class="yes">YES</td>
+<td class="no2">NO<a href="#note4">[4]</a></td>
+<td class="no2">NO<a href="#note4">[4]</a></td>
+<td class="yes">YES</td>
+<td class="yes">YES</td>
+<td class="yes">YES</td>
+</tr>
+
+<tr>
+<th>AUDIO</th>
+<td class="yes">YES</td>
+<td class="no">TBD</td>
+<td class="yes">YES</td>
+<td class="yes">YES</td>
+<td class="yes">YES</td>
+<td class="yes">YES</td>
+<td class="no">NO</td>
+<td class="yes">YES</td>
+<td class="yes">YES</td>
+<td class="yes">YES</td>
+<td class="yes">YES</td>
+</tr>
+
+<tr>
+<th>SOFTWARE</th>
+<td class="yes">YES</td>
+<td class="std">NO</td>
+<td class="yes">YES</td>
+<td class="std">render_gp2x</td>
+<td class="yes">YES</td>
+<td class="yes">YES</td>
+<td class="std">render_nds</td>
+<td class="yes">YES</td>
+<td class="yes">YES</td>
+<td class="std">render_gx</td>
+<td class="yes">YES</td>
+</tr>
+
+<tr>
+<th>GL</th>
+<td class="yes">YES</td>
+<td class="yes">YES</td>
+<td class="yes">YES</td>
+<td class="na">N/A</td>
+<td class="yes">YES</td>
+<td class="yes">YES</td>
+<td class="no">NO</td>
+<td class="no">NO</td>
+<td class="yes">YES</td>
+<td class="no">NO</td>
+<td class="no2">NO</td>
+</tr>
+
+<tr>
+<th>OVERLAY</th>
+<td class="yes">YES</td>
+<td class="no">NO</td>
+<td class="yes">YES</td>
+<td class="no">NO</td>
+<td class="yes">YES</td>
+<td class="yes">YES</td>
+<td class="no">NO</td>
+<td class="no">NO</td>
+<td class="yes">YES</td>
+<td class="no">NO</td>
+<td class="no2">NO</td>
+</tr>
+
+<tr>
+<th>GLSL</th>
+<td class="yes">YES</td>
+<td class="yes">YES</td>
+<td class="yes">YES</td>
+<td class="na">N/A</td>
+<td class="yes">YES</td>
+<td class="yes">YES</td>
+<td class="na">N/A</td>
+<td class="na">N/A</td>
+<td class="yes">YES</td>
+<td class="na">N/A</td>
+<td class="no2">NO</td>
+</tr>
+
+<tr>
+<th>UPDATER</th>
+<td class="yes">YES</td>
+<td class="yes">YES</td>
+<td class="yes">YES</td>
+<td class="yes">YES</td>
+<td class="yes">YES</td>
+<td class="yes">YES</td>
+<td class="no">NO</td>
+<td class="no">NO</td>
+<td class="no2">NO<a href="#note5">[5]</a></td>
+<td class="no">NO</td>
+<td class="yes">YES</td>
+</tr>
+
+
+<tr>
+<th>MODULAR</th>
+<td class="yes">YES</td>
+<td class="yes">YES</td>
+<td class="yes">YES</td>
+<td class="na">N/A</td>
+<td class="yes">YES</td>
+<td class="yes">YES</td>
+<td class="na">N/A</td>
+<td class="na">N/A</td>
+<td class="yes">YES</td>
+<td class="na">N/A</td>
+<td class="na">N/A</td>
+</tr>
+
+<tr>
+<th>PNG</th>
+<td class="yes">YES</td>
+<td class="yes">YES</td>
+<td class="yes">YES</td>
+<td class="yes">YES</td>
+<td class="yes">YES</td>
+<td class="yes">YES</td>
+<td class="no2">NO<a href="#note6">[6]</a></td>
+<td class="no2">NO<a href="#note6">[6]</a></td>
+<td class="yes">YES</td>
+<td class="no2">NO<a href="#note6">[6]</a></td>
+<td class="yes">YES</td>
+</tr>
+
+<tr>
+<th>X11</th>
+<td class="na">N/A</td>
+<td class="na">N/A</td>
+<td class="na">N/A</td>
+<td class="na">N/A</td>
+<td class="na">N/A</td>
+<td class="na">N/A</td>
+<td class="na">N/A</td>
+<td class="na">N/A</td>
+<td class="yes">YES</td>
+<td class="na">N/A</td>
+<td class="no2">NO</td>
+</tr>
+
+<tr>
+<th>LOADSAVE_METER</th>
+<td class="std">NO</td>
+<td class="std">NO</td>
+<td class="std">NO</td>
+<td class="yes">YES</td>
+<td class="std">NO</td>
+<td class="std">NO</td>
+<td class="yes">YES</td>
+<td class="yes">YES</td>
+<td class="std">NO</td>
+<td class="yes">YES</td>
+<td class="std">NO</td>
+</tr>
+
+</table>
+
+<h3>Platform Notes</h3>
+
+<ol>
+
+<li><a name="note1"/>Could use existing `package.sh' however this does
+not handle PDB files.<br/>
+MSVC binaries are replicate of MinGW binaries and require a non-free, non
+cross-capable compiler.
+</li>
+
+<li><a name="note2"/>&quot;Optimized Visibility&quot; refers to the
+hiding of library symbols which are not required or referenced
+outside of that library. An &quot;optimized&quot; library is smaller
+and loads faster.<br/>
+Required on Win32. Only applicable with CONFIG_MODULAR=y builds.
+</li>
+
+<li><a name="note3"/>Disabled due to miscompilation of stack protector
+in conjunction with C++ exceptions with some MinGW compilers.
+</li>
+
+<li><a name="note4"/>The editor and help system features are disabled
+to conserve cache on embedded platforms. The features build and work
+on these platforms, but they are basically unusable due to the lack of any
+on-screen keyboard.
+</li>
+
+<li><a name="note5"/>The updater is typically disabled in the Linux
+binaries that are shipped (for distributions like Debian or Fedora), even
+though the feature can easily be enabled.<br/>The issue is that MegaZeux is
+installed system-wide on these platforms and overwrites cannot be
+guaranteed.<br/>Additionally, it is felt that the advanced package management
+on these platforms supercedes any usefulness of the built-in updater.
+</li>
+
+<li><a name="note6"/>Not had the opportunity to cross compile the
+required libraries (zlib and libpng).<br/>Future developments may depend on
+these libraries, such as networking and the archive browser. Currently, the
+bloat cannot be justified, and these platforms do not yet have functioning
+network APIs.
+</li>
+
+</ol>
+
+<h3>Copyright</h3>
+
+<p>This document may be copied and redistributed without limitation
+or reservation.</p>
+
+</body>
+
+</html>
