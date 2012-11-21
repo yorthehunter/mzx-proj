@@ -126,7 +126,7 @@ video_output = opengl1
 # it, MZX will be scaled to fit this specification. Otherwise
 # the setting is ignored.
 
-# window_resolution = 640,350
+window_resolution = 1280,700
 
 # Use this to toggle whether MZX can be scaled while in window
 # mode, if your renderer supports it. If you use a renderer which
