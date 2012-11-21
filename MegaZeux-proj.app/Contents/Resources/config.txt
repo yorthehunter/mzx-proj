@@ -97,7 +97,7 @@ video_output = opengl1
 # "nearest" more pleasing, which will have no "blur". The default
 # setting is "linear".
 
-# gl_filter_method = nearest
+gl_filter_method = nearest
 
 # Some OpenGL driver settings may default vertical sync on, which looks
 # visually better (especially on CRTs) but can cause "speed 1" to run
@@ -254,7 +254,7 @@ pc_speaker_on = 0
 # Set to 1 if you want the board editor to not show the hotkey
 # help by default.
 
-# board_editor_hide_help = 1
+board_editor_hide_help = 1
 
 
 ### Robot editor options ###
