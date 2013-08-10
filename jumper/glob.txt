@@ -1,0 +1,466 @@
+
+disable mesg edge
+set "commands" to "(300000)"
+set "enter_menu" to 0
+goto "#set_inv"
+loop start
+set "$i&loopcount&" to "ITEM #&loopcount&"
+loop for 12
+
+set "$i5" to " "
+set "$i8" to " "
+set "$i9" to " "
+
+set "$i_current" to "$i0"
+
+. "vchx,y  ::  vcox,y"
+
+put "@clas_vlay.mzm" Image_file p02 at 0 0
+
+set "local2" to 100
+set "local9" to 101
+set "local11" to 102
+set "local10" to 103
+set "local12" to 104
+set "local14" to 105
+
+. "viewport counters"
+set "view_width" to 60
+set "view_height" to 20
+
+set "spr&local2&_refx" to 0
+set "spr&local2&_refy" to 0
+set "spr&local2&_width" to 41
+set "spr&local2&_height" to 7
+set "spr&local2&_vlayer" to 1
+set "spr&local2&_overlay" to 1
+set "spr&local2&_ccheck" to 1
+set "spr&local9&_refx" to 41
+set "spr&local9&_refy" to 0
+set "spr&local9&_width" to 21
+set "spr&local9&_height" to 19
+set "spr&local9&_vlayer" to 1
+set "spr&local9&_overlay" to 1
+set "spr&local9&_ccheck" to 1
+set "spr&local10&_refx" to 62
+set "spr&local10&_refy" to 0
+set "spr&local10&_width" to 1
+set "spr&local10&_height" to 1
+set "spr&local10&_vlayer" to 1
+set "spr&local10&_overlay" to 1
+set "spr&local10&_ccheck" to 1
+set "spr&local12&_refx" to 63
+set "spr&local12&_refy" to 0
+set "spr&local12&_width" to 1
+set "spr&local12&_height" to 1
+set "spr&local12&_vlayer" to 1
+set "spr&local12&_overlay" to 1
+set "spr&local12&_ccheck" to 2
+set "spr&local11&_refx" to 0
+set "spr&local11&_refy" to 7
+set "spr&local11&_width" to 16
+set "spr&local11&_height" to 4
+set "spr&local11&_vlayer" to 1
+set "spr&local11&_overlay" to 1
+set "spr&local11&_ccheck" to 1
+set "spr&local14&_refx" to 0
+set "spr&local14&_refy" to 0
+set "spr&local14&_width" to 14
+set "spr&local14&_height" to 1
+set "spr&local14&_vlayer" to 1
+set "spr&local14&_overlay" to 1
+set "spr&local14&_ccheck" to 0
+
+set "$l1" to "This is a test."
+set "$l2" to "This is a test part 2."
+set "$l3" to "This is a test part three."
+set "$l4" to "Test four."
+
+set "local" to 1
+viewport size is "view_width" by "view_height"
+viewport is at "((80 - 'view_width')/2)" "((25 - 'view_height')/2)"
+
+: "lo"
+wait for 1
+. "* \"@e~f   Inventory: ~0&$i_current&   \""
+. "if \"key_code\" = 28 then \"inv\""
+if "key_code" = 28 then "inv_reboot"
+goto "lo"
+
+: "text_open"
+lockplayer
+send "spr99" to "#pause"
+goto "#w_&playerfacedir&"
+goto "#text_cl"
+
+set "local3" to "(('scrolledx')+(('view_width')/2)-(('spr&local2&_width')/2))"
+set "local4" to "(('scrolledy')+(('view_height')-('spr&local2&_height')))"
+. "set \"local3\" to \"scrolledx\""
+. "set \"local4\" to \"scrolledy\""
+if "playery" > "('local4' - 4)" then "#text_top"
+put c?? Sprite "local2" at "local3" "local4"
+set "local13" to "('$n.length' + 1)"
+goto "#text_dr"
+: "text_wait"
+freezetime for 2
+wait for 1
+if "key_pressed" = 28 then "text_wait"
+if "key_pressed" = 57 then "text_wait"
+
+: "text_enter_ch"
+freezetime for 2
+wait for 1
+if "key_code" = 57 then "text_enter_go"
+if "key_code" = 28 then "text_enter_go"
+goto "text_enter_ch"
+
+: "#text_top"
+set "local4" to "(('scrolledy')+1)"
+goto "#return"
+
+: "text_enter_go"
+set "spr&local2&_off" to 1
+send "interact" to "#return"
+wait for 3
+send "spr99" to "#return"
+unlockplayer
+goto "lo"
+
+: "#text_cl"
+set "local3" to 2
+set "local4" to 1
+: "text_cl_lo"
+set "vch&local3&,&local4&" to 219
+set "vco&local3&,&local4&" to 238
+inc "local3" by 1
+if "local3" > 38 then "#text_cl_res"
+if "local4" > 4 then "#return"
+goto "text_cl_lo"
+goto "#return"
+
+: "#text_cl_res"
+set "local3" to 2
+inc "local4" by 1
+goto "#return"
+
+: "#text_dr"
+set "local3" to 2
+set "local4" to 1
+set "local5" to 1
+set "local6" to "$l&local5&.length"
+set "local7" to 0
+set "local8" to 1
+goto "#text_dr_line"
+set "local3" to 2
+inc "local4" by 1
+inc "local5" by 1
+set "local6" to "$l&local5&.length"
+set "local7" to 0
+goto "#text_dr_line"
+set "local3" to 2
+inc "local4" by 1
+inc "local5" by 1
+set "local6" to "$l&local5&.length"
+set "local7" to 0
+goto "#text_dr_line"
+set "local3" to 2
+inc "local4" by 1
+inc "local5" by 1
+set "local6" to "$l&local5&.length"
+set "local7" to 0
+goto "#text_dr_line"
+goto "#return"
+
+: "#text_dr_line"
+loop start
+freezetime for 2
+dec "local13" by 1
+set "vch&local3&,&local4&" to "$l&local5&.&local7&"
+set "vco&local3&,&local4&" to 224
+if "local13" > 0 then "#text_dr_colorText"
+if "vch&local3&,&local4&" = 32 then "#text_fix_space"
+inc "local3" by 1
+inc "local7" by 1
+wait for "local8"
+if "key_code" = 28 then "#text_fin"
+if "key_code" = 57 then "#text_fin"
+loop for "('local6' - 1)"
+goto "#return"
+
+: "#text_dr_colorText"
+set "vco&local3&,&local4&" to 239
+goto "#return"
+
+: "#text_fix_space"
+set "vch&local3&,&local4&" to 255
+set "vco&local3&,&local4&" to 238
+goto "#return"
+
+: "#text_fin"
+set "local8" to 0
+goto "#return"
+
+: "#set_inv"
+loop start
+set "$i&loopcount&" to " "
+loop for 99
+set "$i_current" to " "
+goto "#return"
+
+: "#inv_restart"
+loop start
+set "$i_&loopcount&" to "$i('loopcount' + 'local8')"
+loop for 13
+goto "#return"
+
+. "//////////////////////////////////////////////////////"
+
+: "inv_reboot"
+set "local20" to 0
+set "local21" to 1
+set "local22" to 17
+
+: "inv_reboot_lo"
+if "$i&local20&.length" <= 1 then "#inv_reboot_fix"
+inc "local20" by 1
+inc "local21" by 1
+if "local20" > 14 then "inv_reboot_ch"
+goto "inv_reboot_lo"
+
+: "#inv_reboot_fix"
+set "$i&local20&" to "$i&local21&"
+set "$i&local21&.length" to 0
+goto "#return"
+
+: "inv_reboot_ch"
+dec "local22" by 1
+if "local22" = 0 then "inv"
+set "local20" to 0
+set "local21" to 1
+goto "inv_reboot_lo"
+
+. "//////////////////////////////////////////////////////"
+
+: "inv"
+set "$combine" to " "
+. "goto \"#inv_reboot\""
+set "local8" to 0
+: "inv_restart"
+loop start
+set "$i_&loopcount&" to "$i('loopcount' + 'local8')"
+loop for 15
+lockplayer
+goto "#w_&playerfacedir&"
+freezetime for 4
+set "mzx_speed" to 4
+set "local3" to "(('scrolledx')+(('view_width')/2)-(('spr&local9&_width')/2))"
+set "local4" to "(('scrolledy')+(('view_height')/2)-(('spr&local9&_height')/2))"
+. "set \"local3\" to \"scrolledx\""
+. "set \"local4\" to \"scrolledy\""
+
+put c?? Sprite "local9" at "local3" "local4"
+
+set "local3" to 42
+set "local4" to 1
+set "local5" to 0
+set "local6" to "$i&local5&.length"
+set "local7" to 0
+
+: "inv_lo"
+. "goto \"#inv_cl\""
+goto "#inv_dr_line"
+set "local3" to 42
+inc "local4" by 1
+inc "local5" by 1
+set "local6" to "$i&local5&.length"
+set "local7" to 0
+if "local4" > 16 then "inv_lo_end"
+goto "inv_lo"
+: "inv_lo_end"
+set "local5" to 0
+set "local3" to "('spr&local9&_x' + 1)"
+set "local4" to "('spr&local9&_y' + 1)"
+put c?? Sprite "local10" at "local3" "local4"
+: "inv_arrow_lo"
+goto "#inv_dr_line_selected"
+wait for 1
+. "goto \"#inv_dr_line_current\""
+freezetime for 2
+if "key_code" = 28 then "inv_select"
+if "key_code" = 57 then "inv_select"
+if "key_code" = 44 then "inv_delete"
+wait for 1
+if uppressed then "inv_a_u"
+if downpressed then "inv_a_d"
+if "key_code" = 28 then "inv_select"
+if "key_code" = 57 then "inv_select"
+if "key_code" = 44 then "inv_delete"
+. "if \"key_code\" = 44 then \"inv_combine\""
+. "if \"key_code\" = 54 then \"inv_combine\""
+goto "inv_arrow_lo"
+
+: "inv_a_u"
+if "spr&local10&_y" <= "('spr&local9&_y' + 1)" then "inv_arrow_lo"
+dec "spr&local10&_y" by 1
+dec "local5" by 1
+goto "inv_arrow_lo"
+
+: "inv_a_d"
+if "spr&local10&_y" >= "('spr&local9&_y' + 16)" then "inv_arrow_lo"
+inc "spr&local10&_y" by 1
+inc "local5" by 1
+goto "inv_arrow_lo"
+
+: "inv_combine"
+if "$combine" != " " then "inv_try_combine"
+put c?? Sprite "local12" at "spr&local10&_x" "spr&local10&_y"
+set "$combine" to "$i_&local5&"
+freezetime for 6
+wait for 4
+goto "inv_arrow_lo"
+
+: "inv_try_combine"
+goto "('$combine')-('$i_('local5')')"
+goto "('$i_('local5')')-('$combine')"
+freezetime for 6
+wait for 4
+set "$combine" to " "
+set "spr&local12&_off" to 1
+goto "inv_arrow_lo"
+
+: "inv_delete"
+set "$i&local5&" to " "
+set "spr&local9&_off" to 0
+set "spr&local10&_off" to 0
+set "spr&local14&_off" to 0
+set "mzx_speed" to 4
+freezetime for 0
+unlockplayer
+goto "lo"
+
+: "inv_select"
+set "$i_current" to "$i_&local5&"
+set "spr&local9&_off" to 0
+set "spr&local10&_off" to 0
+set "spr&local14&_off" to 0
+set "mzx_speed" to 4
+freezetime for 0
+unlockplayer
+goto "lo"
+
+: "#inv_dr_line"
+set "vch&local3&,&local4&" to 7
+set "vco&local3&,&local4&" to 224
+inc "local3" by 2
+goto "inv_cl"
+: "inv_dr_cont"
+loop start
+set "vch&local3&,&local4&" to "$i_&local5&.&local7&"
+set "vco&local3&,&local4&" to 224
+if "vch&local3&,&local4&" = 32 then "#text_fix_space"
+inc "local3" by 1
+inc "local7" by 1
+loop for "('local6' - 1)"
+goto "#return"
+
+: "inv_cl"
+loop start
+set "vch&local3&,&local4&" to 219
+set "vco&local3&,&local4&" to 238
+inc "local3" by 1
+loop for 15
+set "local3" to 45
+goto "inv_dr_cont"
+
+: "#inv_dr_line_selected"
+set "local3" to 44
+set "local4" to "(1 + 'local5')"
+set "spr&local14&_refx" to "local3"
+set "spr&local14&_refy" to "local4"
+put cfe Sprite "local14" at "('spr&local10&_x' + 2)" "spr&local10&_y"
+goto "#return"
+
+: "#inv_dr_line_current"
+set "local3" to 44
+set "local4" to "(1 + 'local5')"
+. "set \"local3\" to \"('spr&local10&_x' + 2)\""
+. "set \"local4\" to \"spr&local10&_y\""
+set "local6" to "$i_&local5&.length"
+
+. "local10 == sprite for selector"
+. "local5 == item Index"
+
+loop start
+set "vco&local3&,&local4&" to 239
+if "vch&local3&,&local4&" = 32 then "#text_fix_space"
+inc "local3" by 1
+. "inc \"local7\" by 1"
+loop for "('local6' - 1)"
+goto "#return"
+
+: "inv_back_to_top"
+set "local3" to 42
+set "local4" to 1
+set "local5" to 0
+set "local6" to "$i&local5&.length"
+set "local7" to 0
+: "inv_back_to_top_lo"
+goto "#inv_dr_line"
+set "local3" to 42
+inc "local4" by 1
+inc "local5" by 1
+set "local6" to "$i&local5&.length"
+set "local7" to 0
+if "local4" > 13 then "inv_back_to_top_end"
+goto "inv_back_to_top_lo"
+: "inv_back_to_top_end"
+set "local5" to 13
+set "local3" to "('spr&local9&_x' + 1)"
+set "local4" to "('spr&local9&_y' + 13)"
+put c?? Sprite "local10" at "local3" "local4"
+goto "inv_arrow_lo"
+
+: "#ask_y_n"
+lockplayer
+freezetime for 2
+send "spr99" to "#pause"
+goto "#w_&playerfacedir&"
+set "local20" to "scrolledx"
+set "local21" to "scrolledy"
+set "local22" to 1
+put c?? Sprite "local11" at "('local20' + (30 - ('spr&local11&_width' / 2)))" "('local21' + (10 - ('spr&local11&_height' / 2)))"
+put c?? Sprite "local10" at "('spr&local11&_x' + 1)" "('spr&local11&_y' + 1)"
+: "ask_y_n_lo"
+if uppressed then "#ask_sw_&local22&"
+if rightpressed then "#ask_sw_&local22&"
+if downpressed then "#ask_sw_&local22&"
+if leftpressed then "#ask_sw_&local22&"
+if "key_code" = 57 then "ask_set"
+if "key_code" = 28 then "ask_set"
+freezetime for 2
+wait for 1
+goto "ask_y_n_lo"
+
+: "#ask_sw_1"
+set "local22" to 2
+inc "spr&local10&_x" by 8
+freezetime for 2
+wait for 2
+goto "#return"
+
+: "#ask_sw_2"
+set "local22" to 1
+dec "spr&local10&_x" by 8
+freezetime for 2
+wait for 2
+goto "#return"
+
+: "ask_set"
+set "ask_y_n" to "local22"
+set "spr&local10&_off" to 1
+set "spr&local11&_off" to 1
+send "interact" to "#return"
+wait for 3
+unlockplayer
+goto "#return"
+
