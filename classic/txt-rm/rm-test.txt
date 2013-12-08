@@ -1,0 +1,4 @@
+newroom:
+%This room is huge and intimidating! It has so many secrets that I can barely accept it. Holy fuck this is an awesome room.:
+#look:
+%Holy fuck. I dig this room.:
